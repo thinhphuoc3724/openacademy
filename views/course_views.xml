@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<!--    Thiet lap View cho model Course theo dang tree view, bao gom cot name, responsible, level-->
     <record id="course_view_list" model="ir.ui.view">
         <field name="name">openacademy.course.tree</field>
         <field name="model">openacademy.course</field>
@@ -12,22 +13,27 @@
         </field>
     </record>
 
+<!--    Thiet lap View cho tung record cua model Course theo dang form view, bao gom: -->
     <record id="course_view_form" model="ir.ui.view">
         <field name="name">openacademy.course.form</field>
         <field name="model">openacademy.course</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
+<!--                    Gop cac thuoc tinh name, responsible_id, level thanh Group-->
                     <group>
                         <field name="name"/>
                         <field name="responsible_id"/>
                         <field name="level"/>
                     </group>
+<!--                    Tao the Description va Sessions phia duoi Group(name, responsible_id, level)-->
                     <notebook>
                         <page string="Description" name="desc">
+<!--                            Them phan Mo ta cho the Description -->
                             <field name="description"/>
                         </page>
                         <page string="Sessions" name="sessions">
+<!--                            Them cac thuoc tinh cho the Sessions bao gom name, instructor_id, start_date, duration, seats-->
                             <field name="session_ids">
                                 <tree editable="bottom">
                                     <field name="name"/>
@@ -43,7 +49,7 @@
             </form>
         </field>
     </record>
-
+<!--Them nut Action cho form view cua model Course-->
     <record id="course_action" model="ir.actions.act_window">
         <field name="name">Courses</field>
         <field name="res_model">openacademy.course</field>
